@@ -106,7 +106,7 @@ export const ALLOWED_FILE_TYPES = [
 export const ALLOWED_FILE_EXTENSIONS = [".pdf", ".dwg", ".dxf"] as const;
 
 /** 5 MB in bytes */
-export const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
+export const MAX_FILE_SIZE_BYTES = 4 * 1024 * 1024;
 
 // ─── Country Options ───────────────────────────────────────────────────────
 /*
