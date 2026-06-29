@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+
+
+@theme {
+  
+  --color-navy-primary: #0f172a;
+  --color-navy-secondary: #1e293b;
+  --color-steel: #64748b;
+  --color-light-grey: #cbd5e1;
+  --color-background: #f8fafc;
+  --color-accent-blue: #2563eb;
+  --color-accent-blue-light: #3b82f6;
+
+  /* Fonts */
+  --font-family-barlow: var(--font-barlow), sans-serif;
+  --font-family-inter: var(--font-inter), sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────── */
+:root {
+  --navy-primary: #0f172a;
+  --navy-secondary: #1e293b;
+  --steel-grey: #64748b;
+  --light-grey: #cbd5e1;
+  --background: #f8fafc;
+  --accent-blue: #2563eb;
+  --accent-blue-light: #3b82f6;
+  --font-inter: "Inter", sans-serif;
+  --font-barlow: "Barlow", sans-serif;
+  --transition-base: 150ms ease;
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base Resets ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--navy-primary);
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-secondary); }
+::-webkit-scrollbar-thumb { background: var(--steel-grey); border-radius: 3px; }
+
+/* ─── Font Utilities ────────────────────────────────────────────────────── */
+/*
+ * FIX: In Tailwind v4 you cannot use @apply inside @layer utilities to
+ * reference another utility in the same layer. Write plain CSS instead.
+ */
+.font-barlow {
+  font-family: var(--font-barlow), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* ─── Layout Helpers ─────────────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.container-custom {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+.display-heading {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-blue);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 3px;
+  background-color: var(--accent-blue);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: background-color 200ms ease, transform 100ms ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--light-grey);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+  background-color: transparent;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 100ms ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  border-color: var(--navy-primary);
+  background-color: var(--navy-primary);
+  color: #ffffff;
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
+}
+
+.btn-outline:focus-visible {
+  outline: 2px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: transparent;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 100ms ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-outline-white:hover {
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: var(--navy-primary);
+}
+
+.btn-outline-white:active {
+  transform: scale(0.98);
+}
+
+.btn-outline-white:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  border-radius: 3px;
+  border: 1px solid var(--light-grey);
+  background-color: #ffffff;
+  padding: 1.5rem;
+  transition: box-shadow 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-dark {
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+}
